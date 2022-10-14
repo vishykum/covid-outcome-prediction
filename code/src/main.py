@@ -147,3 +147,8 @@ joined_test = pd.merge(temp_cases_test, reduced_locations, on="location_id")
 temp_locations.to_csv("../results/location_2021_processed.csv")
 joined_train.to_csv("../results/cases_train_2021_processed.csv")
 joined_test.to_csv("../results/cases_test_2021_processed.csv")
+
+train_feature_set = joined_train[["age", "chronic_disease_binary", "country", "average_country_fatality_ratio", "outcome_group"]]
+train_feature_set.to_csv("../results/cases_train_2021_processed_features.csv")
+test_feature_set = joined_test[["age", "chronic_disease_binary", "country", "average_country_fatality_ratio", "outcome_group"]]
+test_feature_set.to_csv("../results/cases_test_2021_processed_features.csv")
