@@ -1,9 +1,7 @@
-import pwd
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import numbers
 
 cases_train = pd.read_csv("../data/cases_2021_train.csv")
 cases_test = pd.read_csv("../data/cases_2021_test.csv")
