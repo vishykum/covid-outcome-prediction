@@ -81,8 +81,8 @@ for index, row in cases_train_impute.iterrows():
             cc = location.get('country_code', '')
             if (not(province == "")):
                 cases_train_impute.loc[index, 'province'] = province
-
 cases_train_cleaned = cases_train_impute
+
 
 # ------------ 1.5 Dealing with outliers ------------
 # Remove outliers from location dataset.
@@ -94,7 +94,8 @@ location_cleaned = location_2021[
 ]
 boxplot_outliers = boxplot_stats(location_cleaned["Case_Fatality_Ratio"]).pop(0)['fliers']
 location_cleaned = location_cleaned[(location_cleaned["Case_Fatality_Ratio"] < min(boxplot_outliers)) & (location_cleaned["Case_Fatality_Ratio"] > 0)]
-
+# Remove outliers where Chronic_disease_binary = True and outcome_group != deceased
+cases_train_cleaned = cases_train_cleaned.drop(cases_train_cleaned[(cases_train_cleaned["chronic_disease_binary"] == True) & (cases_train_cleaned["outcome_group"] != "deceased")].index) 
 
 # ------------ 1.6 Joining datasets ------------
 def get_or_add_location(x, dictionary):
@@ -148,6 +149,8 @@ temp_locations.to_csv("../results/location_2021_processed.csv")
 joined_train.to_csv("../results/cases_train_2021_processed.csv")
 joined_test.to_csv("../results/cases_test_2021_processed.csv")
 
+
+# ------------ 1.7 Feature Selection ------------
 train_feature_set = joined_train[["age", "chronic_disease_binary", "country", "average_country_fatality_ratio", "outcome_group"]]
 train_feature_set.to_csv("../results/cases_train_2021_processed_features.csv")
 test_feature_set = joined_test[["age", "chronic_disease_binary", "country", "average_country_fatality_ratio", "outcome_group"]]
