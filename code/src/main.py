@@ -57,7 +57,6 @@ location_cleaned = location_2021[
     (location_2021["Confirmed"] > 2000) # Actual value will be "Confirmed" > 2000 to include some more important values.
 ]
 # TODO Remove outliers in location.csv for case fatality ratio, in cases_train and cases_test files for chronic_disease/Outcome 
-# TODO we could do this based on the outliers found in 1.3's boxplot.
 
 
 # ------------ 1.6 Joining datasets ------------
