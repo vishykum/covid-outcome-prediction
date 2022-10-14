@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from matplotlib.cbook import boxplot_stats  
+from geopy.geocoders import Nominatim
 
 cases_train = pd.read_csv("/Users/evancoulter/Desktop/Cmpt/Courses/cmpt459/cmpt-459-group-project/code/data/cases_2021_train.csv")
 cases_test = pd.read_csv("/Users/evancoulter/Desktop/Cmpt/Courses/cmpt459/cmpt-459-group-project/code/data/cases_2021_test.csv")
@@ -44,7 +45,6 @@ def format_wrong_ages(x):
 cases_train_cleaned["age"] = cases_train_cleaned["age"].apply(lambda x : format_wrong_ages(x))
 cases_test_cleaned["age"] = cases_test_cleaned["age"].apply(lambda x : format_wrong_ages(x))
 
-# TODO Impute missing values for country and possibly provinces
 from geopy.geocoders import Nominatim
 
 geolocator = Nominatim(user_agent="geoapiExercises")
@@ -57,7 +57,7 @@ for index, row in cases_train_impute.iterrows():
         Longitude = str(row['longitude'])
         location = geolocator.reverse((Latitude+','+Longitude), language='en')
         if (location == None):
-            continue;
+            continue
         location = location.raw['address']
         country = location.get('country', '')
         province = location.get('state', '')
@@ -85,8 +85,7 @@ for index, row in cases_train_impute.iterrows():
             if (not(province == "")):
                 cases_train_impute.loc[index, 'province'] = province
 
-# TODO Move code that cleans south korea and us entries to proper naming conventions from 1.6 to here.
-
+cases_train_cleaned = cases_train_impute
 
 # ------------ 1.5 Dealing with outliers ------------
 # Remove outliers from location dataset.
