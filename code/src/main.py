@@ -47,6 +47,8 @@ cases_test_cleaned["age"] = cases_test_cleaned["age"].apply(lambda x : format_wr
 
 # TODO Impute missing values for country and possibly provinces
 
+# TODO Move code that cleans south korea and us entries to proper naming conventions from 1.6 to here.
+
 
 # ------------ 1.5 Dealing with outliers ------------
 # Remove outliers from location dataset.
@@ -100,8 +102,14 @@ temp_cases_train["location_id"] = temp_cases_train["country"].apply(lambda x : d
 temp_cases_test["location_id"] = temp_cases_test["country"].apply(lambda x : dictionary_lookup(x, location_id_dictionary))
 
 # Aggregate all locations row to one entry per country with average fatality ratio within each country. 
-temp_locations = reduce_locations_to_one_entry_per_country(temp_locations)
+reduced_locations = reduce_locations_to_one_entry_per_country(temp_locations)
 
 # Join datasets based on new "location_id" column.
-joined_train = pd.merge(temp_cases_train, temp_locations, on="location_id")
-joined_test = pd.merge(temp_cases_test, temp_locations, on="location_id")
+joined_train = pd.merge(temp_cases_train, reduced_locations, on="location_id")
+joined_test = pd.merge(temp_cases_test, reduced_locations, on="location_id")
+
+# Save processed csv files
+temp_locations.to_csv("../results/location_2021_processed.csv")
+joined_train.to_csv("../results/cases_train_2021_processed.csv")
+joined_test.to_csv("../results/cases_test_2021_processed.csv")
+
