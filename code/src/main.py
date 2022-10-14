@@ -45,8 +45,6 @@ def format_wrong_ages(x):
 cases_train_cleaned["age"] = cases_train_cleaned["age"].apply(lambda x : format_wrong_ages(x))
 cases_test_cleaned["age"] = cases_test_cleaned["age"].apply(lambda x : format_wrong_ages(x))
 
-from geopy.geocoders import Nominatim
-
 geolocator = Nominatim(user_agent="geoapiExercises")
 
 cases_train_impute = cases_train_cleaned.copy()
