@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+from matplotlib.cbook import boxplot_stats  
 
 cases_train = pd.read_csv("../data/cases_2021_train.csv")
 cases_test = pd.read_csv("../data/cases_2021_test.csv")
@@ -56,9 +55,10 @@ location_cleaned = location_2021[
     (location_2021["Case_Fatality_Ratio"].notna()) & 
     (location_2021["Case_Fatality_Ratio"] > 0) & 
     (location_2021["Case_Fatality_Ratio"] < 100) &
-    (location_2021["Confirmed"] > 2000) # Actual value will be "Confirmed" > 2000 to include some more important values.
+    (location_2021["Confirmed"] > 2000)
 ]
-# TODO Remove outliers in location.csv for case fatality ratio, in cases_train and cases_test files for chronic_disease/Outcome 
+boxplot_outliers = boxplot_stats(location_cleaned["Case_Fatality_Ratio"]).pop(0)['fliers']
+location_cleaned = location_cleaned[(location_cleaned["Case_Fatality_Ratio"] < min(boxplot_outliers)) & (location_cleaned["Case_Fatality_Ratio"] > 0)]
 
 
 # ------------ 1.6 Joining datasets ------------
@@ -112,4 +112,3 @@ joined_test = pd.merge(temp_cases_test, reduced_locations, on="location_id")
 temp_locations.to_csv("../results/location_2021_processed.csv")
 joined_train.to_csv("../results/cases_train_2021_processed.csv")
 joined_test.to_csv("../results/cases_test_2021_processed.csv")
-
