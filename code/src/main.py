@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 from matplotlib.cbook import boxplot_stats  
 
-cases_train = pd.read_csv("../data/cases_2021_train.csv")
-cases_test = pd.read_csv("../data/cases_2021_test.csv")
-location_2021 = pd.read_csv("../data/location_2021.csv")
+cases_train = pd.read_csv("/Users/evancoulter/Desktop/Cmpt/Courses/cmpt459/cmpt-459-group-project/code/data/cases_2021_train.csv")
+cases_test = pd.read_csv("/Users/evancoulter/Desktop/Cmpt/Courses/cmpt459/cmpt-459-group-project/code/data/cases_2021_test.csv")
+location_2021 = pd.read_csv("/Users/evancoulter/Desktop/Cmpt/Courses/cmpt459/cmpt-459-group-project/code/data/location_2021.csv")
 
 # ------------ 1.1 Cleaning Messy Labels ------------
 if 'outcome' in cases_train.columns:
@@ -45,6 +45,45 @@ cases_train_cleaned["age"] = cases_train_cleaned["age"].apply(lambda x : format_
 cases_test_cleaned["age"] = cases_test_cleaned["age"].apply(lambda x : format_wrong_ages(x))
 
 # TODO Impute missing values for country and possibly provinces
+from geopy.geocoders import Nominatim
+
+geolocator = Nominatim(user_agent="geoapiExercises")
+
+cases_train_impute = cases_train_cleaned.copy()
+
+for index, row in cases_train_impute.iterrows():
+    if (str(row['country']) == 'nan'):
+        Latitude = str(row['latitude'])
+        Longitude = str(row['longitude'])
+        location = geolocator.reverse((Latitude+','+Longitude), language='en')
+        if (location == None):
+            continue;
+        location = location.raw['address']
+        country = location.get('country', '')
+        province = location.get('state', '')
+        cc = location.get('country_code', '')
+        cases_train_impute.loc[index, 'country'] = country
+                
+                
+    if (str(row['province']) == 'nan'):
+        Latitude = str(row['latitude'])
+        Longitude = str(row['longitude'])
+        location = geolocator.reverse((Latitude+','+Longitude), language='en')
+        if(location == None):
+            cases_train_impute.loc[index, 'province'] = row['country']
+        else:
+            location = location.raw['address']
+            country = location.get('country', '')
+            province = location.get('state', '')
+            if province == "":
+                province = location.get('region', '')
+            if province == "":
+                province = location.get('county', '')
+            if province == "":
+                province = row['country']
+            cc = location.get('country_code', '')
+            if (not(province == "")):
+                cases_train_impute.loc[index, 'province'] = province
 
 # TODO Move code that cleans south korea and us entries to proper naming conventions from 1.6 to here.
 
