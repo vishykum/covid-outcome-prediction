@@ -43,7 +43,7 @@ def balance_classes_1_3(train_dataset: pd.DataFrame):
     Balances the classes in the training dataset.
     """
     # UNCOMMENT TO VIEW BEFORE PLOT
-    helper_functions.show_train_dataset_pie_chart(train_dataset, "Before Balancing")
+    # helper_functions.show_train_dataset_pie_chart(train_dataset, "Before Balancing")
 
     deceased = train_dataset[train_dataset["outcome_group"] == 0]
     new_deceased = deceased.sample(frac=10, replace=True, random_state=1)
@@ -63,7 +63,7 @@ def balance_classes_1_3(train_dataset: pd.DataFrame):
     new_train.reset_index(inplace=True)
 
     # UNCOMMENT TO VIEW AFTER PLOT
-    helper_functions.show_train_dataset_pie_chart(new_train, "After Balancing")
+    # helper_functions.show_train_dataset_pie_chart(new_train, "After Balancing")
     
     return new_train
 
