@@ -62,7 +62,7 @@ def balance_classes_1_3(train_dataset: pd.DataFrame):
     new_train.sort_index(axis = 0, inplace=True)
     new_train.reset_index(inplace=True)
 
-    # UNCOMMENT OT VIEW AFTER PLOT
+    # UNCOMMENT TO VIEW AFTER PLOT
     helper_functions.show_train_dataset_pie_chart(new_train, "After Balancing")
     
     return new_train
