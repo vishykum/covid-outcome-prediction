@@ -23,3 +23,5 @@ def main():
     test_data['chronic_disease_binary'] = pd.factorize(test_data['chronic_disease_binary'])[0]
 
 
+if __name__ == "__main__":
+    main()
