@@ -3,6 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import helper_functions
+from sklearn.model_selection import train_test_split
 
 def main():
     train_data = pd.read_excel("data/cases_2021_train_processed_2.xlsx")
@@ -11,6 +12,8 @@ def main():
     train_data,test_data = feature_selection_1_1(train_data, test_data)
     train_data,test_data = mapping_features_1_2(train_data, test_data)
     train_data = balance_classes_1_3(train_data)
+
+    train_data, validation_data = train_test_split(train_data, test_size=0.2)
 
 def feature_selection_1_1(train_dataset: pd.DataFrame, test_dataset: pd.DataFrame):
     """
