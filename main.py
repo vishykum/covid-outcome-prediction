@@ -18,6 +18,9 @@ def main():
 
     train_data, validation_data = train_test_split(train_data, test_size=0.2)
 
+    # UNCOMMENT TO SEE XGBOOST RESULTS
+    # xgboost_building_1_4(train_data)
+
 def feature_selection_1_1(train_dataset: pd.DataFrame, test_dataset: pd.DataFrame):
     """
     Takes the train and test datasets and returns copies of them with only 
@@ -53,20 +56,20 @@ def balance_classes_1_3(train_dataset: pd.DataFrame):
 
     deceased = train_dataset[train_dataset["outcome_group"] == 0]
     new_deceased = deceased.sample(frac=10, replace=True, random_state=1)
-    new_deceased.reset_index(inplace=True)
+    new_deceased.reset_index(inplace=True, drop=True)
 
     hospitalized = train_dataset[train_dataset["outcome_group"] == 1]
     hospitalized_sample = np.random.choice(hospitalized.index, 3000, replace=True)
     new_hospitalized = hospitalized.drop(hospitalized_sample)
-    new_hospitalized.reset_index(inplace=True)
+    new_hospitalized.reset_index(inplace=True, drop=True)
 
     nonhospitalized = train_dataset[train_dataset["outcome_group"] == 2]
     new_nonhospitalized = nonhospitalized.sample(frac=3.3, replace=True, random_state=1)
-    new_nonhospitalized.reset_index(inplace=True)
+    new_nonhospitalized.reset_index(inplace=True, drop=True)
 
     new_train = pd.concat([new_deceased, new_hospitalized, new_nonhospitalized])
     new_train.sort_index(axis = 0, inplace=True)
-    new_train.reset_index(inplace=True)
+    new_train.reset_index(inplace=True, drop=True)
 
     # UNCOMMENT TO VIEW AFTER PLOT
     # helper_functions.show_train_dataset_pie_chart(new_train, "After Balancing")
@@ -75,8 +78,27 @@ def balance_classes_1_3(train_dataset: pd.DataFrame):
 
 
 def xgboost_building_1_4(train_dataset: pd.DataFrame):
-    # Evan Todo
-    return None
+    model = xgb.XGBClassifier(random_state = 1)
+    parameter_search_space = {
+        "learning_rate": [0.1, 0.2, 0.3],
+        "max_depth": [3, 5, 7, 9],
+        "n_estimators": [100, 200],
+        "objective": ["multi:softmax"],
+        "num_class": [3]
+    }
+    grid_search_cv = GridSearchCV(
+        estimator=model,
+        param_grid=parameter_search_space,
+        scoring="f1_micro",
+        cv=5,
+        verbose=3
+    )
+    data = train_dataset.iloc[:, :4].values
+    labels = train_dataset.iloc[:, 4].values.reshape(-1, 1)
+    grid_search_cv.fit(data, labels)
+    print(grid_search_cv.best_score_)
+    print(grid_search_cv.best_params_)
+    pd.DataFrame(grid_search_cv.cv_results_).to_csv("xgboost_results.csv")
 
 
 def check_for_overfitting_1_5(train_dataset: pd.DataFrame, validation_dataset: pd.DataFrame):
