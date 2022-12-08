@@ -19,7 +19,7 @@ def main():
     train_data, validation_data = train_test_split(train_data, test_size=0.2)
 
     # UNCOMMENT TO SEE XGBOOST RESULTS
-    # xgboost_building_1_4(train_data)
+    xgboost_building_1_4(train_data)
 
 def feature_selection_1_1(train_dataset: pd.DataFrame, test_dataset: pd.DataFrame):
     """
@@ -78,7 +78,11 @@ def balance_classes_1_3(train_dataset: pd.DataFrame):
 
 
 def xgboost_building_1_4(train_dataset: pd.DataFrame):
+    # Decide number of k-fold splits
+    k = 5
+    # Create model with blank parameters
     model = xgb.XGBClassifier(random_state = 1)
+    # Create space of possible parameters
     parameter_search_space = {
         "learning_rate": [0.1, 0.2, 0.3],
         "max_depth": [3, 5, 7, 9],
@@ -86,19 +90,24 @@ def xgboost_building_1_4(train_dataset: pd.DataFrame):
         "objective": ["multi:softmax"],
         "num_class": [3]
     }
+    # Create grid search cross validation object
     grid_search_cv = GridSearchCV(
         estimator=model,
         param_grid=parameter_search_space,
         scoring="f1_macro",
-        cv=5,
-        verbose=3
+        cv=k,
+        verbose=10
     )
+    # Put data and labels in proper format
     data = train_dataset.iloc[:, :4].values
     labels = train_dataset.iloc[:, 4].values.reshape(-1, 1)
+    # Fit grid search object
     grid_search_cv.fit(data, labels)
+    # Print and save results.
     print(grid_search_cv.best_score_)
     print(grid_search_cv.best_params_)
     pd.DataFrame(grid_search_cv.cv_results_).to_csv("xgboost_results.csv")
+    # TODO: find out how to get f1 score for just deceased column
 
 
 def check_for_overfitting_1_5(train_dataset: pd.DataFrame, validation_dataset: pd.DataFrame):
