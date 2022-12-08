@@ -2,8 +2,11 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
+import xgboost as xgb
 import helper_functions
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
+
 
 def main():
     train_data = pd.read_excel("data/cases_2021_train_processed_2.xlsx")
@@ -70,5 +73,19 @@ def balance_classes_1_3(train_dataset: pd.DataFrame):
     
     return new_train
 
+
+def xgboost_building_1_4(train_dataset: pd.DataFrame):
+    # Evan Todo
+    return None
+
+
+def check_for_overfitting_1_5(train_dataset: pd.DataFrame, validation_dataset: pd.DataFrame):
+    # TODO
+    return None
+
+
+def prediciton_on_test_sets_1_7(test_dataset: pd.DataFrame):
+    # TODO
+    return None
 if __name__ == "__main__":
     main()
