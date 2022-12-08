@@ -89,7 +89,7 @@ def xgboost_building_1_4(train_dataset: pd.DataFrame):
     grid_search_cv = GridSearchCV(
         estimator=model,
         param_grid=parameter_search_space,
-        scoring="f1_micro",
+        scoring="f1_macro",
         cv=5,
         verbose=3
     )
