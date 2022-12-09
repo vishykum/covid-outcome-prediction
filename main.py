@@ -6,6 +6,7 @@ import xgboost as xgb
 import helper_functions
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import precision_recall_fscore_support
 
 
 def main():
@@ -107,7 +108,6 @@ def xgboost_building_1_4(train_dataset: pd.DataFrame):
     print(grid_search_cv.best_score_)
     print(grid_search_cv.best_params_)
     pd.DataFrame(grid_search_cv.cv_results_).to_csv("xgboost_results.csv")
-    # TODO: find out how to get f1 score for just deceased column
 
 
 def check_for_overfitting_1_5(train_dataset: pd.DataFrame, validation_dataset: pd.DataFrame):
@@ -118,5 +118,6 @@ def check_for_overfitting_1_5(train_dataset: pd.DataFrame, validation_dataset: p
 def prediciton_on_test_sets_1_7(test_dataset: pd.DataFrame):
     # TODO
     return None
+
 if __name__ == "__main__":
     main()
