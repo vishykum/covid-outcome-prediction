@@ -7,6 +7,7 @@ import helper_functions
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import precision_recall_fscore_support
+import mlp_classifer
 
 
 def main():
@@ -20,7 +21,8 @@ def main():
     train_data, validation_data = train_test_split(train_data, test_size=0.2)
 
     # UNCOMMENT TO SEE XGBOOST RESULTS
-    xgboost_building_1_4(train_data)
+    # xgboost_building_1_4(train_data)
+    mlp_classifer.create_MLPClassifier(train_data, validation_data)
 
 def feature_selection_1_1(train_dataset: pd.DataFrame, test_dataset: pd.DataFrame):
     """
