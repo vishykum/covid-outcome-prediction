@@ -1,0 +1,13 @@
+
+learning_rate=0.2,n_estimators=150,max_depth=6 -> mean_macro_f1_score=0.8135220243145304,deceased_f1score=0.7261081386042167,accuracy=0.8186316714034568
+learning_rate=0.2,n_estimators=150,max_depth=8 -> mean_macro_f1_score=0.8137886347202773,deceased_f1score=0.7270035925773769,accuracy=0.8187139758883305
+learning_rate=0.2,n_estimators=150,max_depth=10 -> mean_macro_f1_score=0.815123462767669,deceased_f1score=0.7291226916112434,accuracy=0.8199905518589485
+learning_rate=0.2,n_estimators=250,max_depth=6 -> mean_macro_f1_score=0.8139689928476109,deceased_f1score=0.7272859564100248,accuracy=0.8188374834941603
+learning_rate=0.2,n_estimators=250,max_depth=8 -> mean_macro_f1_score=0.8137886347202773,deceased_f1score=0.7270035925773769,accuracy=0.8187139758883305
+learning_rate=0.2,n_estimators=250,max_depth=10 -> mean_macro_f1_score=0.815123462767669,deceased_f1score=0.7291226916112434,accuracy=0.8199905518589485
+learning_rate=0.3,n_estimators=150,max_depth=6 -> mean_macro_f1_score=0.8138302963286751,deceased_f1score=0.7268853761321561,accuracy=0.8187963397314768
+learning_rate=0.3,n_estimators=150,max_depth=8 -> mean_macro_f1_score=0.814848377791116,deceased_f1score=0.7290411050019652,accuracy=0.81961992728442
+learning_rate=0.3,n_estimators=150,max_depth=10 -> mean_macro_f1_score=0.8154883159670125,deceased_f1score=0.7297088463590834,accuracy=0.8203612188322431
+learning_rate=0.3,n_estimators=250,max_depth=6 -> mean_macro_f1_score=0.8145949767819042,deceased_f1score=0.7288336501109098,accuracy=0.8193315987150122
+learning_rate=0.3,n_estimators=250,max_depth=8 -> mean_macro_f1_score=0.814848377791116,deceased_f1score=0.7290411050019652,accuracy=0.81961992728442
+learning_rate=0.3,n_estimators=250,max_depth=10 -> mean_macro_f1_score=0.8154883159670125,deceased_f1score=0.7297088463590834,accuracy=0.8203612188322431

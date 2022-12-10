@@ -1,0 +1,33 @@
+
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=sgd,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=sgd,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=sgd,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=sgd,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=adam,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=adam,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=adam,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=tanh,solver=adam,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=sgd,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=sgd,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=sgd,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=sgd,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=adam,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=adam,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=adam,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(10, 30, 10),activation=relu,solver=adam,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=sgd,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=sgd,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=sgd,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=sgd,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=adam,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=adam,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=adam,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=tanh,solver=adam,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=sgd,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=sgd,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=sgd,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=sgd,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=adam,alpha=0.0001,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=adam,alpha=0.0001,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=adam,alpha=0.05,learning_rate=constant -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
+hidden_layer_sizes=(20,),activation=relu,solver=adam,alpha=0.05,learning_rate=adaptive -> mean_macro_f1_score=0.8153298056812126,deceased_f1score=0.7303349953227495,accuracy=0.8200317804191644
